@@ -260,9 +260,17 @@ impl Tun {
         self.iface.address(None)
     }
 
+    pub fn change_address(&self, address: Ipv4Addr) -> Result<Ipv4Addr> {
+        self.iface.address(Some(address))
+    }
+
     /// Returns the IPv4 destination address of MTU.
     pub fn destination(&self) -> Result<Ipv4Addr> {
         self.iface.destination(None)
+    }
+
+    pub fn change_destination(&self, address: Ipv4Addr) -> Result<Ipv4Addr> {
+        self.iface.destination(Some(address))
     }
 
     /// Returns the IPv4 broadcast address of MTU.
@@ -278,5 +286,9 @@ impl Tun {
     /// Returns the flags of MTU.
     pub fn flags(&self) -> Result<i16> {
         self.iface.flags(None)
+    }
+
+    pub fn ifidx(&self) -> Result<u32> {
+        self.iface.ifidx()
     }
 }

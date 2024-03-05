@@ -171,6 +171,10 @@ impl Interface {
         }
         Ok(())
     }
+
+    pub fn ifidx(&self) -> Result<u32> {
+        nix::net::if_::if_nametoindex(self.name()).map_err(Into::into)
+    }
 }
 
 impl Drop for Interface {
