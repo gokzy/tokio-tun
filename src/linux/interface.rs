@@ -175,6 +175,10 @@ impl Interface {
     pub fn ifidx(&self) -> Result<u32> {
         nix::net::if_::if_nametoindex(self.name()).map_err(Into::into)
     }
+
+    pub fn up(&self) -> Result<i16> {
+        self.flags(Some(libc::IFF_UP as i16 | libc::IFF_RUNNING as i16))
+    }
 }
 
 impl Drop for Interface {

@@ -291,4 +291,8 @@ impl Tun {
     pub fn ifidx(&self) -> Result<u32> {
         self.iface.ifidx()
     }
+
+    pub fn up(&self) -> Result<i16> {
+        self.iface.up()
+    }
 }
